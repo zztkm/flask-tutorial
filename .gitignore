@@ -1,3 +1,6 @@
 env/
 instance/
 flaskr/__pycache__/
+*.egg-info/
+.idea/
+*.swp
