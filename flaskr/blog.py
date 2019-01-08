@@ -17,13 +17,13 @@ bp = Blueprint('blog', __name__)
 
 @bp.route('/')
 def index():
-   db = get_db()
-   posts = db.execute(
-       'SELECT p.id, title, body, created, author_id, username'
-       ' FROM post p JOIN user u ON p.author_id = u.id'  # If there is no space at the biginning.
-       ' ORDER BY created DESC'                          # It is juddged to be joined with the previous line and an error occurs.
-   ).fetchall()
-   return render_template('blog/index.html', posts=posts)
+    db = get_db()
+    posts = db.execute(
+        'SELECT p.id, title, body, created, author_id, username'
+        ' FROM post p JOIN user u ON p.author_id = u.id'  # If there is no space at the biginning.
+        ' ORDER BY created DESC'                          # It is juddged to be joined with the previous line and an error occurs.
+    ).fetchall()
+    return render_template('blog/index.html', posts=posts)
 
 
 def get_post(id, cheak_author=True):
@@ -87,11 +87,12 @@ def update(id):
         else:
             db = get_db()
             db.execute(
-                'UPDATE post SET title = ?, body = ?'
-                ' WHERE id = ?',
+                'UPDATE post SET title = ?, body = ? WHERE id = ?',
                 (title, body, id)
             )
             db.commit()
+            return redirect(url_for('blog.index'))
+        
     return render_template('blog/update.html', post=post)
 
 
