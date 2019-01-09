@@ -1,6 +1,13 @@
 env/
 instance/
-flaskr/__pycache__/
+__pycache__/
 *.egg-info/
 .idea/
 *.swp
+*.pyc
+dist/
+build/
+.cache/
+.pytest_cache/
+.coverage
+htmlcov/
