@@ -1,0 +1,13 @@
+[Unit]
+Description=uWSGI instance to serve flaskr
+After=network.target
+
+[Service]
+User=admin
+Group=www-data
+WorkingDirectory=/home/admin/flask-tutorial
+Environment="PATH=/home/admin/flask-tutorial/env/bin"
+ExecStart=/home/admin/flask-tutorial/env/bin/uwsgi --ini flaskr.ini
+
+[Install]
+WantedBy=multi-user.target
